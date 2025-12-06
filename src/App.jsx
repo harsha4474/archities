@@ -112,123 +112,404 @@ const Navigation = () => {
   );
 };
 
-// 3D Room Component
-const Room3D = () => {
-  const meshRef = useRef();
-  const [hovered, setHovered] = useState(false);
+// Professional 3D Architectural Visualization Component
+const ArchitecturalRoom3D = () => {
+  const groupRef = useRef();
+  const [wireframeProgress, setWireframeProgress] = useState(0);
 
   useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.003;
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
+    const time = state.clock.elapsedTime;
+
+    // Slow rotation for professional presentation
+    if (groupRef.current) {
+      groupRef.current.rotation.y = Math.sin(time * 0.15) * 0.3;
     }
+
+    // Animate wireframe to solid transition (repeating cycle)
+    const progress = (Math.sin(time * 0.3) + 1) / 2; // 0 to 1
+    setWireframeProgress(progress);
   });
 
-  return (
-    <group>
-      {/* Floor */}
-      <mesh position={[0, -1, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[8, 8]} />
-        <meshStandardMaterial
-          color="#4A4A4A"
-          metalness={0.8}
-          roughness={0.2}
-        />
-      </mesh>
+  // Create blueprint-style grid helper
+  const BlueprintGrid = () => {
+    const gridRef = useRef();
 
-      {/* Walls - creating a room structure */}
-      <group ref={meshRef}>
-        {/* Back Wall */}
-        <mesh position={[0, 1.5, -4]}>
-          <boxGeometry args={[8, 5, 0.1]} />
+    return (
+      <group ref={gridRef}>
+        {/* Main grid floor */}
+        <gridHelper args={[12, 24, '#DC143C', '#4A4A4A']} position={[0, -1, 0]} />
+
+        {/* Vertical grid on back wall */}
+        <gridHelper
+          args={[8, 16, '#DC143C', '#4A4A4A']}
+          position={[0, 2, -4]}
+          rotation={[Math.PI / 2, 0, 0]}
+        />
+      </group>
+    );
+  };
+
+  // Professional dimension lines
+  const DimensionLines = () => {
+    return (
+      <group>
+        {/* Floor dimension line */}
+        <line>
+          <bufferGeometry attach="geometry">
+            <bufferAttribute
+              attach="attributes-position"
+              count={2}
+              array={new Float32Array([-3, -0.9, 3, 3, -0.9, 3])}
+              itemSize={3}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial attach="material" color="#D4AF37" linewidth={2} />
+        </line>
+      </group>
+    );
+  };
+
+  return (
+    <group ref={groupRef}>
+      <BlueprintGrid />
+      <DimensionLines />
+
+      {/* Professional Architectural Room Structure */}
+      <group position={[0, 0, 0]}>
+        {/* Floor - Professional Material */}
+        <mesh position={[0, -1, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+          <planeGeometry args={[10, 10, 10, 10]} />
+          <meshStandardMaterial
+            color="#2A2A2A"
+            metalness={0.7}
+            roughness={0.3}
+            wireframe={wireframeProgress < 0.3}
+            opacity={wireframeProgress < 0.3 ? 0.6 : 1}
+            transparent
+          />
+        </mesh>
+
+        {/* Back Wall - Wireframe to Solid Transition */}
+        <mesh position={[0, 2, -4]} castShadow>
+          <boxGeometry args={[10, 6, 0.2, 4, 4, 1]} />
           <meshStandardMaterial
             color="#F5F5F5"
-            wireframe={hovered}
-            metalness={0.3}
-            roughness={0.7}
+            metalness={0.2}
+            roughness={0.8}
+            wireframe={wireframeProgress < 0.5}
+            opacity={wireframeProgress < 0.5 ? 0.7 : 1}
+            transparent
           />
         </mesh>
 
         {/* Left Wall */}
-        <mesh position={[-4, 1.5, 0]} rotation={[0, Math.PI / 2, 0]}>
-          <boxGeometry args={[8, 5, 0.1]} />
+        <mesh position={[-5, 2, 0]} rotation={[0, Math.PI / 2, 0]} castShadow>
+          <boxGeometry args={[8, 6, 0.2, 4, 4, 1]} />
           <meshStandardMaterial
             color="#F5F5F5"
-            wireframe={hovered}
-            metalness={0.3}
-            roughness={0.7}
+            metalness={0.2}
+            roughness={0.8}
+            wireframe={wireframeProgress < 0.5}
+            opacity={wireframeProgress < 0.5 ? 0.7 : 1}
+            transparent
           />
         </mesh>
 
-        {/* Furniture - Sofa */}
-        <mesh position={[0, 0, 0]}>
-          <boxGeometry args={[2, 0.8, 1]} />
-          <meshStandardMaterial color="#DC143C" metalness={0.4} roughness={0.6} />
+        {/* Right Wall */}
+        <mesh position={[5, 2, 0]} rotation={[0, -Math.PI / 2, 0]} castShadow>
+          <boxGeometry args={[8, 6, 0.2, 4, 4, 1]} />
+          <meshStandardMaterial
+            color="#F5F5F5"
+            metalness={0.2}
+            roughness={0.8}
+            wireframe={wireframeProgress < 0.5}
+            opacity={wireframeProgress < 0.5 ? 0.7 : 1}
+            transparent
+          />
         </mesh>
 
-        {/* Coffee Table */}
-        <mesh position={[0, -0.3, 1.5]}>
-          <boxGeometry args={[1.5, 0.1, 0.8]} />
-          <meshStandardMaterial color="#D4AF37" metalness={0.9} roughness={0.1} />
+        {/* Ceiling with detail */}
+        <mesh position={[0, 5, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+          <planeGeometry args={[10, 8, 5, 5]} />
+          <meshStandardMaterial
+            color="#E0E0E0"
+            metalness={0.1}
+            roughness={0.9}
+            wireframe={wireframeProgress < 0.4}
+            opacity={wireframeProgress < 0.4 ? 0.5 : 1}
+            transparent
+          />
         </mesh>
 
-        {/* Cabinet */}
-        <mesh position={[3, 0.5, -3.5]}>
-          <boxGeometry args={[1.5, 2, 0.6]} />
-          <meshStandardMaterial color="#8B0000" metalness={0.5} roughness={0.5} />
-        </mesh>
-
-        {/* Floating particles */}
-        {[...Array(20)].map((_, i) => (
-          <Float key={i} speed={2} rotationIntensity={0.5} floatIntensity={2}>
-            <mesh
-              position={[
-                (Math.random() - 0.5) * 6,
-                Math.random() * 4,
-                (Math.random() - 0.5) * 6
-              ]}
-              onPointerOver={() => setHovered(true)}
-              onPointerOut={() => setHovered(false)}
-            >
-              <sphereGeometry args={[0.05, 16, 16]} />
+        {/* Professional Furniture - L-Shaped Sofa */}
+        <group position={[-1, -0.4, 1]}>
+          {/* Main section */}
+          <mesh castShadow>
+            <boxGeometry args={[2.5, 0.6, 1.2]} />
+            <meshStandardMaterial
+              color="#DC143C"
+              metalness={0.3}
+              roughness={0.7}
+              wireframe={wireframeProgress < 0.6}
+              opacity={wireframeProgress < 0.6 ? 0.8 : 1}
+              transparent
+            />
+          </mesh>
+          {/* L section */}
+          <mesh position={[1.2, 0, -1.1]} castShadow>
+            <boxGeometry args={[1.2, 0.6, 1]} />
+            <meshStandardMaterial
+              color="#8B0000"
+              metalness={0.3}
+              roughness={0.7}
+              wireframe={wireframeProgress < 0.6}
+              opacity={wireframeProgress < 0.6 ? 0.8 : 1}
+              transparent
+            />
+          </mesh>
+          {/* Cushions */}
+          {[0, 1, 2].map((i) => (
+            <mesh key={i} position={[-0.8 + i * 0.8, 0.4, 0.5]} castShadow>
+              <boxGeometry args={[0.6, 0.3, 0.6]} />
               <meshStandardMaterial
-                color={i % 2 === 0 ? "#DC143C" : "#D4AF37"}
-                emissive={i % 2 === 0 ? "#DC143C" : "#D4AF37"}
-                emissiveIntensity={0.5}
+                color="#FF6B6B"
+                metalness={0.1}
+                roughness={0.9}
+                wireframe={wireframeProgress < 0.7}
               />
             </mesh>
+          ))}
+        </group>
+
+        {/* Designer Coffee Table with Glass Top */}
+        <group position={[0.5, -0.5, 2.5]}>
+          {/* Glass top */}
+          <mesh position={[0, 0.4, 0]} castShadow>
+            <boxGeometry args={[1.8, 0.05, 1]} />
+            <meshPhysicalMaterial
+              color="#D4AF37"
+              metalness={0.95}
+              roughness={0.05}
+              transmission={0.9}
+              thickness={0.5}
+              wireframe={wireframeProgress < 0.65}
+            />
+          </mesh>
+          {/* Legs */}
+          {[[-0.8, -0.8], [0.8, -0.8], [-0.8, 0.8], [0.8, 0.8]].map((pos, i) => (
+            <mesh key={i} position={[pos[0], 0, pos[1]]} castShadow>
+              <cylinderGeometry args={[0.04, 0.04, 0.8, 16]} />
+              <meshStandardMaterial
+                color="#1A1A1A"
+                metalness={0.8}
+                roughness={0.2}
+              />
+            </mesh>
+          ))}
+        </group>
+
+        {/* Modern TV Unit / Cabinet */}
+        <group position={[0, 0.3, -3.7]}>
+          <mesh castShadow>
+            <boxGeometry args={[4, 1.2, 0.5]} />
+            <meshStandardMaterial
+              color="#2C2C2C"
+              metalness={0.6}
+              roughness={0.4}
+              wireframe={wireframeProgress < 0.55}
+              opacity={wireframeProgress < 0.55 ? 0.8 : 1}
+              transparent
+            />
+          </mesh>
+          {/* Gold accent strip */}
+          <mesh position={[0, 0.61, 0.1]} castShadow>
+            <boxGeometry args={[4, 0.05, 0.1]} />
+            <meshStandardMaterial
+              color="#D4AF37"
+              metalness={0.9}
+              roughness={0.1}
+              emissive="#D4AF37"
+              emissiveIntensity={0.3}
+            />
+          </mesh>
+        </group>
+
+        {/* Pendant Lights - Modern Design */}
+        {[-2, 0, 2].map((x, i) => (
+          <Float key={i} speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
+            <group position={[x, 3.5, 1]}>
+              {/* Cord */}
+              <mesh>
+                <cylinderGeometry args={[0.01, 0.01, 1.5, 8]} />
+                <meshStandardMaterial color="#1A1A1A" />
+              </mesh>
+              {/* Shade */}
+              <mesh position={[0, -0.9, 0]} castShadow>
+                <coneGeometry args={[0.25, 0.4, 16]} />
+                <meshStandardMaterial
+                  color="#DC143C"
+                  metalness={0.7}
+                  roughness={0.3}
+                  wireframe={wireframeProgress < 0.7}
+                  emissive="#DC143C"
+                  emissiveIntensity={wireframeProgress > 0.7 ? 0.5 : 0}
+                />
+              </mesh>
+              {/* Light glow */}
+              <pointLight
+                position={[0, -1.1, 0]}
+                intensity={wireframeProgress > 0.7 ? 0.8 : 0}
+                distance={3}
+                color="#FFD700"
+                castShadow
+              />
+            </group>
           </Float>
         ))}
+
+        {/* Side Table with Decor */}
+        <group position={[3, -0.6, -1]}>
+          <mesh castShadow>
+            <cylinderGeometry args={[0.4, 0.4, 1.2, 24]} />
+            <meshStandardMaterial
+              color="#D4AF37"
+              metalness={0.8}
+              roughness={0.2}
+              wireframe={wireframeProgress < 0.6}
+            />
+          </mesh>
+          {/* Vase on top */}
+          <mesh position={[0, 0.9, 0]} castShadow>
+            <cylinderGeometry args={[0.1, 0.15, 0.4, 16]} />
+            <meshStandardMaterial
+              color="#8B0000"
+              metalness={0.4}
+              roughness={0.6}
+            />
+          </mesh>
+        </group>
+
+        {/* Architectural Reference Points (Blueprint Style) */}
+        {[
+          [-4, -0.9, -3],
+          [4, -0.9, -3],
+          [-4, -0.9, 3],
+          [4, -0.9, 3]
+        ].map((pos, i) => (
+          <mesh key={i} position={pos}>
+            <sphereGeometry args={[0.08, 16, 16]} />
+            <meshStandardMaterial
+              color="#00BFFF"
+              emissive="#00BFFF"
+              emissiveIntensity={0.8}
+              metalness={1}
+              roughness={0}
+            />
+          </mesh>
+        ))}
+
+        {/* Floating Design Particles (CAD Nodes) */}
+        {[...Array(30)].map((_, i) => {
+          const angle = (i / 30) * Math.PI * 2;
+          const radius = 4 + Math.sin(i * 0.5) * 1;
+          return (
+            <Float key={i} speed={1 + i * 0.1} rotationIntensity={0.3} floatIntensity={1}>
+              <mesh
+                position={[
+                  Math.cos(angle) * radius,
+                  1 + Math.sin(i * 0.3) * 2,
+                  Math.sin(angle) * radius
+                ]}
+              >
+                <octahedronGeometry args={[0.04, 0]} />
+                <meshStandardMaterial
+                  color={i % 3 === 0 ? "#DC143C" : i % 3 === 1 ? "#D4AF37" : "#00BFFF"}
+                  emissive={i % 3 === 0 ? "#DC143C" : i % 3 === 1 ? "#D4AF37" : "#00BFFF"}
+                  emissiveIntensity={0.6}
+                  metalness={1}
+                  roughness={0}
+                />
+              </mesh>
+            </Float>
+          );
+        })}
       </group>
 
-      {/* Lighting */}
-      <ambientLight intensity={0.5} />
-      <spotLight position={[5, 5, 5]} angle={0.3} intensity={1} castShadow />
-      <pointLight position={[-5, 3, -3]} intensity={0.5} color="#DC143C" />
-      <pointLight position={[5, 3, 3]} intensity={0.5} color="#D4AF37" />
+      {/* Professional Lighting Setup */}
+      <ambientLight intensity={0.4} />
+      <directionalLight
+        position={[5, 8, 5]}
+        intensity={1.2}
+        castShadow
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+      />
+      <spotLight
+        position={[0, 6, 0]}
+        angle={0.5}
+        intensity={0.8}
+        penumbra={0.5}
+        castShadow
+        color="#FFFFFF"
+      />
+      <pointLight position={[-4, 3, 2]} intensity={0.6} color="#DC143C" distance={8} />
+      <pointLight position={[4, 3, -2]} intensity={0.6} color="#D4AF37" distance={8} />
+      <pointLight position={[0, 4, 4]} intensity={0.5} color="#00BFFF" distance={6} />
     </group>
   );
 };
 
-// Hero Section
+// Hero Section with Professional Blueprint Overlay
 const HeroSection = () => {
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden bg-charcoal">
-      {/* Grid Background */}
-      <div className="absolute inset-0 grid-background opacity-20"></div>
+      {/* Blueprint Grid Background */}
+      <div className="absolute inset-0 grid-background opacity-10"></div>
 
-      {/* 3D Canvas */}
+      {/* Professional Blueprint Overlay Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+        {/* Corner Technical Marks */}
+        <div className="absolute top-4 left-4 text-electric-blue font-mono text-xs">
+          <div>ARCHITIES © 2025</div>
+          <div className="mt-1">SCALE: 1:50</div>
+          <div>DRG NO: INT-001</div>
+        </div>
+        <div className="absolute top-4 right-4 text-electric-blue font-mono text-xs text-right">
+          <div>MODERN LIVING SPACE</div>
+          <div className="mt-1">3D VISUALIZATION</div>
+          <div>AP & TELANGANA</div>
+        </div>
+
+        {/* Technical Border Lines */}
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-crimson-red to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-metallic-gold to-transparent"></div>
+        <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-crimson-red to-transparent"></div>
+        <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-metallic-gold to-transparent"></div>
+
+        {/* Dimension Line Indicators */}
+        <svg className="absolute bottom-20 left-10 w-64 h-20" viewBox="0 0 200 50">
+          <line x1="0" y1="25" x2="200" y2="25" stroke="#D4AF37" strokeWidth="1" />
+          <line x1="0" y1="20" x2="0" y2="30" stroke="#D4AF37" strokeWidth="1" />
+          <line x1="200" y1="20" x2="200" y2="30" stroke="#D4AF37" strokeWidth="1" />
+          <text x="100" y="15" fill="#D4AF37" fontSize="8" textAnchor="middle">PREMIUM DESIGN</text>
+        </svg>
+      </div>
+
+      {/* Professional 3D Canvas */}
       <div className="absolute inset-0">
-        <Canvas shadows>
-          <PerspectiveCamera makeDefault position={[5, 3, 8]} />
+        <Canvas shadows dpr={[1, 2]} gl={{ antialias: true, alpha: true }}>
+          <PerspectiveCamera makeDefault position={[8, 5, 12]} fov={50} />
           <Suspense fallback={null}>
-            <Room3D />
+            <ArchitecturalRoom3D />
           </Suspense>
           <OrbitControls
             enableZoom={false}
             enablePan={false}
-            maxPolarAngle={Math.PI / 2}
-            minPolarAngle={Math.PI / 4}
+            autoRotate={false}
+            maxPolarAngle={Math.PI / 2.2}
+            minPolarAngle={Math.PI / 6}
+            maxAzimuthAngle={Math.PI / 4}
+            minAzimuthAngle={-Math.PI / 4}
           />
         </Canvas>
       </div>
@@ -242,9 +523,9 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
-            Crafting <span className="gradient-text">Dream Spaces</span>
+            Where <span className="gradient-text">3D Vision</span> Meets
             <br />
-            from Vision to Reality
+            Architectural Mastery
           </motion.h1>
 
           <motion.p
@@ -253,7 +534,9 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="text-xl md:text-2xl text-light-gray mb-8 font-light"
           >
-            Premium Interior Design Excellence in Andhra Pradesh & Telangana
+            Award-Winning Interior Design Powered by Advanced 3D Visualization
+            <br />
+            <span className="text-lg text-metallic-gold">Serving Andhra Pradesh & Telangana with Professional Excellence</span>
           </motion.p>
 
           <motion.div
@@ -347,31 +630,51 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="text-3xl font-bold mb-6 text-crimson-red">
-              Building Dreams Since 2014
+              Masterful Design Powered by Technology
             </h3>
             <p className="text-lg text-light-gray mb-6 leading-relaxed">
-              With over a decade of excellence in interior design, <span className="text-metallic-gold font-semibold">archities</span> has
-              transformed more than 500 spaces across Andhra Pradesh and Telangana into stunning showcases
-              of style, functionality, and innovation.
+              Since 2014, <span className="text-metallic-gold font-semibold">archities</span> has pioneered the fusion of traditional
+              interior design excellence with cutting-edge 3D visualization technology. Our professional-grade
+              CAD and rendering software allows clients to <span className="text-electric-blue font-semibold">experience their space before a single brick is laid</span>.
             </p>
             <p className="text-lg text-light-gray mb-6 leading-relaxed">
-              Our team of 25+ award-winning architects and designers brings together cutting-edge 3D
-              visualization, sustainable design practices, and deep understanding of local aesthetics to
-              create spaces that truly reflect your vision.
+              Our team of 25+ certified architects and designers utilizes industry-leading tools—AutoCAD, SketchUp Pro,
+              3ds Max, and V-Ray—to create photorealistic renders and immersive walkthroughs. With over 500 completed
+              projects across AP & Telangana, we blend <span className="text-crimson-red font-semibold">technical precision with artistic vision</span>.
             </p>
-            <p className="text-lg text-light-gray mb-8 leading-relaxed">
-              From concept sketches to final execution, we handle every detail with precision and care,
-              ensuring your project is delivered on time and exceeds expectations.
+            <p className="text-lg text-light-gray mb-6 leading-relaxed">
+              Every project begins with detailed technical drawings, evolves through 3D wireframe modeling, and culminates
+              in stunning photorealistic visualization—ensuring zero surprises and 100% satisfaction.
             </p>
 
+            <div className="glass p-6 rounded-xl border border-mid-gray mb-6">
+              <h4 className="text-metallic-gold font-semibold mb-3 flex items-center gap-2">
+                <span>🏆</span> Technical Capabilities
+              </h4>
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <div>✓ Photorealistic 3D Renders</div>
+                <div>✓ Virtual Reality Tours</div>
+                <div>✓ CAD Technical Drawings</div>
+                <div>✓ Material Visualization</div>
+                <div>✓ Lighting Simulations</div>
+                <div>✓ Real-time Modifications</div>
+              </div>
+            </div>
+
             <div className="flex flex-wrap gap-4">
-              {['Sustainable Design', 'Custom Solutions', '3D Visualization', 'Timely Delivery'].map((item, index) => (
+              {[
+                { label: 'BIM Technology', icon: '🔧' },
+                { label: 'Sustainable Design', icon: '🌿' },
+                { label: 'Smart Home Integration', icon: '💡' },
+                { label: 'Timely Delivery', icon: '⏱️' }
+              ].map((item, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ scale: 1.05 }}
-                  className="glass px-6 py-3 rounded-full text-sm font-semibold border border-crimson-red"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="glass px-5 py-3 rounded-full text-sm font-semibold border border-crimson-red flex items-center gap-2"
                 >
-                  ✓ {item}
+                  <span>{item.icon}</span>
+                  {item.label}
                 </motion.div>
               ))}
             </div>
@@ -381,26 +684,98 @@ const AboutSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative h-96"
+            className="relative h-96 glass-dark rounded-2xl p-4 border border-mid-gray"
           >
-            <Canvas>
-              <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-              <ambientLight intensity={0.5} />
-              <spotLight position={[10, 10, 10]} angle={0.15} intensity={1} />
+            {/* Professional Software Interface Mockup */}
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 text-xs font-mono text-electric-blue">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-crimson-red"></div>
+                <div className="w-3 h-3 rounded-full bg-metallic-gold"></div>
+                <div className="w-3 h-3 rounded-full bg-electric-blue"></div>
+              </div>
+              <div>archities_CAD_Studio.dwg</div>
+            </div>
+
+            <Canvas shadows>
+              <PerspectiveCamera makeDefault position={[3, 2, 4]} />
+              <ambientLight intensity={0.4} />
+              <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+              <spotLight position={[0, 5, 0]} angle={0.3} intensity={0.5} />
+
               <Suspense fallback={null}>
-                <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-                  <mesh>
-                    <boxGeometry args={[2, 2, 2]} />
-                    <meshStandardMaterial
-                      color="#DC143C"
-                      metalness={0.8}
-                      roughness={0.2}
-                      wireframe
-                    />
-                  </mesh>
-                </Float>
+                {/* Rotating architectural elements showcasing design software */}
+                <group>
+                  {/* Main building wireframe */}
+                  <Float speed={2} rotationIntensity={0.3} floatIntensity={0.8}>
+                    <mesh rotation={[0, Math.PI / 4, 0]}>
+                      <boxGeometry args={[2, 2.5, 2]} />
+                      <meshStandardMaterial
+                        color="#DC143C"
+                        metalness={0.9}
+                        roughness={0.1}
+                        wireframe={true}
+                        transparent
+                        opacity={0.8}
+                      />
+                    </mesh>
+                  </Float>
+
+                  {/* Inner solid structure */}
+                  <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
+                    <mesh rotation={[0, -Math.PI / 4, 0]} scale={0.8}>
+                      <boxGeometry args={[2, 2.5, 2]} />
+                      <meshPhysicalMaterial
+                        color="#D4AF37"
+                        metalness={0.8}
+                        roughness={0.2}
+                        transparent
+                        opacity={0.6}
+                        transmission={0.5}
+                      />
+                    </mesh>
+                  </Float>
+
+                  {/* Architectural grid reference */}
+                  <gridHelper args={[4, 8, '#00BFFF', '#4A4A4A']} position={[0, -1.5, 0]} />
+
+                  {/* CAD measurement points */}
+                  {[
+                    [-1, 1.5, -1], [1, 1.5, -1], [-1, 1.5, 1], [1, 1.5, 1],
+                    [-1, -1.5, -1], [1, -1.5, -1], [-1, -1.5, 1], [1, -1.5, 1]
+                  ].map((pos, i) => (
+                    <mesh key={i} position={pos}>
+                      <sphereGeometry args={[0.06, 16, 16]} />
+                      <meshStandardMaterial
+                        color="#00BFFF"
+                        emissive="#00BFFF"
+                        emissiveIntensity={1}
+                      />
+                    </mesh>
+                  ))}
+
+                  {/* Floating design elements */}
+                  {[0, 1, 2].map((i) => (
+                    <Float key={i} speed={2 + i * 0.5} rotationIntensity={0.5} floatIntensity={1}>
+                      <mesh position={[Math.cos(i * 2) * 2.5, i - 1, Math.sin(i * 2) * 2.5]}>
+                        <octahedronGeometry args={[0.15, 0]} />
+                        <meshStandardMaterial
+                          color={i === 0 ? "#DC143C" : i === 1 ? "#D4AF37" : "#00BFFF"}
+                          metalness={1}
+                          roughness={0}
+                        />
+                      </mesh>
+                    </Float>
+                  ))}
+                </group>
               </Suspense>
             </Canvas>
+
+            {/* Technical info overlay */}
+            <div className="absolute bottom-4 left-4 right-4 flex justify-between text-xs font-mono text-light-gray">
+              <div>RENDER: Real-time</div>
+              <div>QUALITY: Ultra</div>
+              <div>SCALE: 1:100</div>
+            </div>
           </motion.div>
         </div>
       </div>
