@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { processSteps } from '../data/process';
+import { processSteps } from '../data/process.jsx';
 
 const Process = () => {
   const ref = useRef(null);

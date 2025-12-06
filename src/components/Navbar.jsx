@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,12 +49,8 @@ const Navbar = () => {
             transition={{ delay: 0.2 }}
             className="flex items-center"
           >
-            <a href="#home" className="flex items-center space-x-2">
-              <span className={`text-2xl font-bold ${
-                isScrolled ? 'text-deep-blue' : 'text-white'
-              }`}>
-                ARCHITIES
-              </span>
+            <a href="#home" onClick={(e) => scrollToSection(e, '#home')}>
+              <Logo color={isScrolled ? "default" : "white"} />
             </a>
           </motion.div>
 
