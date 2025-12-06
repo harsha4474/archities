@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import Logo from '../components/Logo';
 
 const Footer = () => {
   const scrollToSection = (href) => {
@@ -37,8 +38,10 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-3xl font-bold mb-4">ARCHITIES</h3>
-            <p className="text-gray-200 mb-4">
+            <div className="mb-4">
+              <Logo color="white" className="h-12" />
+            </div>
+            <p className="text-gray-200 mb-6">
               Transforming spaces into extraordinary experiences through premium interior design.
             </p>
             <div className="flex gap-4">
