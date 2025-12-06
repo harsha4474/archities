@@ -58,8 +58,8 @@ const Services = () => {
               whileHover={{ y: -10, scale: 1.02 }}
               className="group relative bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer"
             >
-              {/* Gradient Background on Hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-deep-blue to-premium-red opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Background on Hover */}
+              <div className="absolute inset-0 bg-deep-blue opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Content */}
               <div className="relative z-10 p-8">
