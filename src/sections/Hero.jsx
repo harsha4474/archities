@@ -9,16 +9,16 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-deep-blue via-deep-blue to-premium-red">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-deep-blue">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
           style={{
             backgroundImage: "url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop')",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-deep-blue/90 via-deep-blue/80 to-premium-red/90" />
+        <div className="absolute inset-0 bg-deep-blue/85" />
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
@@ -29,7 +29,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-20 right-20 w-96 h-96 bg-premium-red opacity-10 rounded-full blur-3xl"
+          className="absolute top-20 right-20 w-96 h-96 bg-premium-red opacity-5 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
