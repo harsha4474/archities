@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
+import WhatsAppButton from './components/WhatsAppButton';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Services from './sections/Services';
@@ -34,6 +35,7 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }
