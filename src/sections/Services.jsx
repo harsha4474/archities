@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { services } from '../data/services';
+import { services } from '../data/services.jsx';
 
 const Services = () => {
   const ref = useRef(null);
@@ -63,7 +63,7 @@ const Services = () => {
 
               {/* Content */}
               <div className="relative z-10 p-8">
-                <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                <div className="mb-4 text-deep-blue group-hover:text-white transform group-hover:scale-110 transition-all duration-300">
                   {service.icon}
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-deep-blue group-hover:text-white transition-colors duration-300">

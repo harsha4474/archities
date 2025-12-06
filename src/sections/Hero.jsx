@@ -10,8 +10,15 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-deep-blue via-deep-blue to-premium-red">
-      {/* Animated Background Elements */}
+      {/* Background Image with Overlay */}
       <div className="absolute inset-0 overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop')",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-deep-blue/90 via-deep-blue/80 to-premium-red/90" />
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
