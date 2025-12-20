@@ -74,7 +74,7 @@ const About = () => {
               className="overflow-hidden rounded-lg shadow-lg"
             >
               <img
-                src="/src/assets/images/about/about-01.jpg"
+                src="/images/about/about-01.jpg"
                 alt="Executed Interior Design - Feature Wall"
                 className="w-full h-64 object-cover"
               />
@@ -85,7 +85,7 @@ const About = () => {
               className="overflow-hidden rounded-lg shadow-lg mt-8"
             >
               <img
-                src="/src/assets/images/about/about-02.jpg"
+                src="/images/about/about-02.jpg"
                 alt="Executed Interior Design - Living Room"
                 className="w-full h-64 object-cover"
               />
@@ -96,7 +96,7 @@ const About = () => {
               className="overflow-hidden rounded-lg shadow-lg col-span-2"
             >
               <img
-                src="/src/assets/images/about/about-03.jpg"
+                src="/images/about/about-03.jpg"
                 alt="Executed Interior Design - Bedroom Suite"
                 className="w-full h-48 object-cover"
               />
