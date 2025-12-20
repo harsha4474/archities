@@ -37,10 +37,10 @@ const Projects = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
-            Our Projects
+            Our Portfolio
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore our portfolio of stunning transformations that showcase our commitment to excellence
+            Exceptional interior design projects that transform spaces into extraordinary experiences
           </p>
         </motion.div>
 
@@ -49,40 +49,38 @@ const Projects = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects.map((project) => (
             <motion.div
               key={project.id}
               variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="group relative overflow-hidden rounded-xl shadow-lg cursor-pointer"
+              whileHover={{ y: -8 }}
+              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
             >
-              {/* Image */}
-              <div className="relative h-80 overflow-hidden">
+              {/* Image Container */}
+              <div className="relative h-72 overflow-hidden bg-gray-100">
                 <motion.img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
                 />
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-blue via-deep-blue/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Subtle overlay on hover */}
+                <div className="absolute inset-0 bg-deep-blue/0 group-hover:bg-deep-blue/10 transition-colors duration-300" />
               </div>
 
-              {/* Content */}
-              <motion.div
-                initial={{ y: 100 }}
-                whileHover={{ y: 0 }}
-                className="absolute bottom-0 left-0 right-0 p-6 text-white"
-              >
-                <span className="inline-block px-3 py-1 bg-premium-red rounded-full text-xs font-semibold mb-2">
+              {/* Always Visible Content */}
+              <div className="p-6 bg-white">
+                <span className="inline-block px-3 py-1 bg-off-white text-deep-blue rounded-md text-xs font-semibold mb-3 border border-gray-200">
                   {project.category}
                 </span>
-                <h3 className="text-xl font-bold">{project.title}</h3>
-              </motion.div>
+                <h3 className="text-xl font-bold text-deep-blue mb-2 group-hover:text-premium-red transition-colors duration-300">
+                  {project.title}
+                </h3>
+                <div className="h-0.5 w-12 bg-premium-red opacity-0 group-hover:opacity-100 group-hover:w-20 transition-all duration-300" />
+              </div>
             </motion.div>
           ))}
         </motion.div>

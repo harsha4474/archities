@@ -4,7 +4,6 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Services from './sections/Services';
 import Projects from './sections/Projects';
-import RenderVsReality from './sections/RenderVsReality';
 import WhyChooseUs from './sections/WhyChooseUs';
 import Process from './sections/Process';
 import Testimonials from './sections/Testimonials';
@@ -29,7 +28,6 @@ function App() {
         <About />
         <Services />
         <Projects />
-        <RenderVsReality />
         <WhyChooseUs />
         <Process />
         <Testimonials />
