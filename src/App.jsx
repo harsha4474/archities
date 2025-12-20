@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import WhatsAppButton from './components/WhatsAppButton';
-import BookingWidget from './components/BookingWidget';
 import SchemaMarkup from './components/SchemaMarkup';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -43,7 +42,6 @@ function App() {
       </main>
       <Footer />
       <WhatsAppButton />
-      <BookingWidget />
     </div>
   );
 }

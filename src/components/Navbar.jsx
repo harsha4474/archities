@@ -74,16 +74,6 @@ const Navbar = () => {
                 {link.name}
               </motion.a>
             ))}
-            <motion.a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, '#contact')}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6 }}
-              className="bg-premium-red text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all"
-            >
-              Get Consultation
-            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -135,13 +125,6 @@ const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              <a
-                href="#contact"
-                onClick={(e) => scrollToSection(e, '#contact')}
-                className="block bg-premium-red text-white px-6 py-2 rounded-full text-center hover:bg-opacity-90 transition-all"
-              >
-                Get Consultation
-              </a>
             </div>
           </motion.div>
         )}
