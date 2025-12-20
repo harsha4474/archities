@@ -3,72 +3,72 @@ export const projects = [
     id: 1,
     title: "Contemporary Living Room with TV Unit",
     category: "Living Room",
-    image: "/src/assets/images/projects/project-01.jpg"
+    image: "/images/projects/project-01.jpg"
   },
   {
     id: 2,
     title: "Modern Kitchen & Dining Area",
     category: "Kitchen",
-    image: "/src/assets/images/projects/project-02.jpg"
+    image: "/images/projects/project-02.jpg"
   },
   {
     id: 3,
     title: "Pooja Room with Integrated Shelving",
     category: "Residential",
-    image: "/src/assets/images/projects/project-03.jpg"
+    image: "/images/projects/project-03.jpg"
   },
   {
     id: 4,
     title: "Children's Bedroom with Theme Wall",
     category: "Bedroom",
-    image: "/src/assets/images/projects/project-04.jpg"
+    image: "/images/projects/project-04.jpg"
   },
   {
     id: 5,
     title: "Master Bedroom with Feature Wall",
     category: "Bedroom",
-    image: "/src/assets/images/projects/project-05.jpg"
+    image: "/images/projects/project-05.jpg"
   },
   {
     id: 6,
     title: "U-Shaped Modular Kitchen",
     category: "Kitchen",
-    image: "/src/assets/images/projects/project-06.jpg"
+    image: "/images/projects/project-06.jpg"
   },
   {
     id: 7,
     title: "Elegant Living Room Execution",
     category: "Living Room",
-    image: "/src/assets/images/projects/project-07.jpg"
+    image: "/images/projects/project-07.jpg"
   },
   {
     id: 8,
     title: "Complete Bedroom Suite",
     category: "Bedroom",
-    image: "/src/assets/images/projects/project-08.jpg"
+    image: "/images/projects/project-08.jpg"
   },
   {
     id: 9,
     title: "Kitchen with Golden Hardware",
     category: "Kitchen",
-    image: "/src/assets/images/projects/project-09.jpg"
+    image: "/images/projects/project-09.jpg"
   },
   {
     id: 10,
     title: "TV Unit with Black & Gold Theme",
     category: "Living Room",
-    image: "/src/assets/images/projects/project-10.jpg"
+    image: "/images/projects/project-10.jpg"
   },
   {
     id: 11,
     title: "Dining Area with Wood Paneling",
     category: "Dining",
-    image: "/src/assets/images/renders/dining-area-01.jpg"
+    image: "/images/renders/dining-area-01.jpg"
   },
   {
     id: 12,
     title: "Entry Foyer with Display Unit",
     category: "Residential",
-    image: "/src/assets/images/renders/entry-display-unit.jpg"
+    image: "/images/renders/entry-display-unit.jpg"
   }
 ];
