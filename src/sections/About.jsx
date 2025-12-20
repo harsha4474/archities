@@ -74,8 +74,8 @@ const About = () => {
               className="overflow-hidden rounded-lg shadow-lg"
             >
               <img
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80"
-                alt="Interior Design 1"
+                src="/src/assets/images/about/about-01.jpg"
+                alt="Executed Interior Design - Feature Wall"
                 className="w-full h-64 object-cover"
               />
             </motion.div>
@@ -85,8 +85,8 @@ const About = () => {
               className="overflow-hidden rounded-lg shadow-lg mt-8"
             >
               <img
-                src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600&q=80"
-                alt="Interior Design 2"
+                src="/src/assets/images/about/about-02.jpg"
+                alt="Executed Interior Design - Living Room"
                 className="w-full h-64 object-cover"
               />
             </motion.div>
@@ -96,8 +96,8 @@ const About = () => {
               className="overflow-hidden rounded-lg shadow-lg col-span-2"
             >
               <img
-                src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80"
-                alt="Interior Design 3"
+                src="/src/assets/images/about/about-03.jpg"
+                alt="Executed Interior Design - Bedroom Suite"
                 className="w-full h-48 object-cover"
               />
             </motion.div>
