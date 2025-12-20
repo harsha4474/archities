@@ -21,25 +21,25 @@ const Hero = () => {
         <div className="absolute inset-0 bg-deep-blue/85" />
         <motion.div
           animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
+            scale: [1, 1.05, 1],
+            rotate: [0, 30, 0],
           }}
           transition={{
-            duration: 20,
+            duration: 30,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
           className="absolute top-20 right-20 w-96 h-96 bg-premium-red opacity-5 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [90, 0, 90],
+            scale: [1.05, 1, 1.05],
+            rotate: [30, 0, 30],
           }}
           transition={{
-            duration: 15,
+            duration: 25,
             repeat: Infinity,
-            ease: "linear"
+            ease: "easeInOut"
           }}
           className="absolute bottom-20 left-20 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"
         />
@@ -48,14 +48,14 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
         >
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
             className="text-5xl md:text-7xl font-bold text-white mb-6"
           >
             Redefining Interior
@@ -63,39 +63,39 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
             className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto"
           >
             Premium architectural interior design that transforms your vision into breathtaking reality
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
             <button
               onClick={() => scrollToSection('#projects')}
-              className="group relative px-8 py-4 bg-white text-deep-blue rounded-full font-semibold text-lg overflow-hidden transition-all hover:scale-105"
+              className="group relative px-8 py-4 bg-white text-deep-blue rounded-full font-semibold text-lg overflow-hidden transition-all duration-300 hover:scale-105"
             >
               <span className="relative z-10">Explore Interiors</span>
               <motion.div
                 className="absolute inset-0 bg-premium-red"
                 initial={{ x: '-100%' }}
                 whileHover={{ x: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
               />
-              <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity z-20">
+              <span className="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
                 Explore Interiors
               </span>
             </button>
 
             <button
               onClick={() => scrollToSection('#contact')}
-              className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-deep-blue transition-all hover:scale-105"
+              className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-deep-blue transition-all duration-300 hover:scale-105"
             >
               Get Free Consultation
             </button>
@@ -106,12 +106,12 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
+          transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             className="text-white text-sm flex flex-col items-center gap-2"
           >
             <span>Scroll to explore</span>

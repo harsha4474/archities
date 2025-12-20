@@ -21,17 +21,18 @@ const BeforeAfter = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.3,
+        delayChildren: 0.2
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
+      transition: { duration: 0.8, ease: "easeOut" }
     }
   };
 
@@ -40,10 +41,10 @@ const BeforeAfter = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
@@ -59,17 +60,17 @@ const BeforeAfter = () => {
 
         {/* Category Filter */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           className="flex justify-center gap-4 mb-12 flex-wrap"
         >
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full font-semibold transition-all ${
+              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
                 selectedCategory === category
                   ? 'bg-premium-red text-white shadow-lg scale-105'
                   : 'bg-white text-gray-700 hover:bg-gray-100 shadow-md'
@@ -169,10 +170,10 @@ const BeforeAfter = () => {
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mt-16"
         >
           <div className="bg-deep-blue text-white rounded-2xl p-8 md:p-12">
@@ -184,7 +185,7 @@ const BeforeAfter = () => {
             </p>
             <button
               onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
-              className="bg-white text-deep-blue px-8 py-4 rounded-full font-semibold text-lg hover:bg-premium-red hover:text-white transition-all hover:scale-105 shadow-xl"
+              className="bg-white text-deep-blue px-8 py-4 rounded-full font-semibold text-lg hover:bg-premium-red hover:text-white transition-all duration-300 hover:scale-105 shadow-xl"
             >
               Start Your Transformation
             </button>
