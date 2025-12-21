@@ -27,29 +27,22 @@ const Testimonials = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
-            What Our Clients Say
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our satisfied clients
-          </p>
-        </motion.div>
-
+    <div className="w-full">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h3 className="text-3xl font-bold text-deep-blue mb-8">
+          Client Testimonials
+        </h3>
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid md:grid-cols-2 gap-8"
+          className="space-y-6"
         >
           {testimonials.map((testimonial) => (
             <motion.div
@@ -95,8 +88,8 @@ const Testimonials = () => {
             </motion.div>
           ))}
         </motion.div>
-      </div>
-    </section>
+      </motion.div>
+    </div>
   );
 };
 

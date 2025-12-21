@@ -43,10 +43,10 @@ const Process = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Our Process
+            How It Works
           </h2>
           <p className="text-lg text-gray-200 max-w-2xl mx-auto">
-            A streamlined journey from concept to completion
+            A transparent, step-by-step process designed for your peace of mind
           </p>
         </motion.div>
 

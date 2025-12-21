@@ -1,32 +1,32 @@
 export const processSteps = [
   {
     id: 1,
-    title: "Consultation",
-    description: "We begin with understanding your vision, requirements, and budget through detailed discussions.",
-    icon: "💬"
+    title: "Meet a Designer",
+    description: "Schedule a free consultation with our expert designers to discuss your vision and requirements.",
+    icon: "👥"
   },
   {
     id: 2,
-    title: "Design",
-    description: "Our team creates comprehensive design concepts with 3D visualizations and material selections.",
-    icon: "✏️"
+    title: "5% Initial Advance",
+    description: "Pay a small 5% advance to kickstart your project and reserve your slot with our team.",
+    icon: "💰"
   },
   {
     id: 3,
-    title: "Approval",
-    description: "Review and refine the designs until they perfectly match your expectations.",
-    icon: "✅"
+    title: "60% Execution Begins",
+    description: "With 60% payment, our skilled craftsmen begin transforming your space with precision.",
+    icon: "🔨"
   },
   {
     id: 4,
-    title: "Execution",
-    description: "Expert craftsmen bring the designs to life with precision and quality workmanship.",
-    icon: "🔧"
+    title: "35% at Dispatch",
+    description: "Pay the final 35% when your custom-made furniture and fittings are ready for delivery.",
+    icon: "🚚"
   },
   {
     id: 5,
-    title: "Delivery",
-    description: "Final inspection and handover of your beautifully transformed space, ready to enjoy.",
-    icon: "🎉"
+    title: "Move In & Enjoy",
+    description: "Experience your beautifully transformed space, ready for you to move in and enjoy.",
+    icon: "🏠"
   }
 ];

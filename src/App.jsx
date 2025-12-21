@@ -3,10 +3,11 @@ import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Services from './sections/Services';
-import Projects from './sections/Projects';
+import PortfolioSlider from './sections/PortfolioSlider';
+import TrustedPartners from './sections/TrustedPartners';
 import WhyChooseUs from './sections/WhyChooseUs';
 import Process from './sections/Process';
-import Testimonials from './sections/Testimonials';
+import TestimonialsAndFAQs from './sections/TestimonialsAndFAQs';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
@@ -27,10 +28,11 @@ function App() {
         <Hero />
         <About />
         <Services />
-        <Projects />
+        <PortfolioSlider />
+        <TrustedPartners />
         <WhyChooseUs />
         <Process />
-        <Testimonials />
+        <TestimonialsAndFAQs />
         <Contact />
       </main>
       <Footer />
