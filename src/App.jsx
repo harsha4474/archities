@@ -5,12 +5,12 @@ import SchemaMarkup from './components/SchemaMarkup';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Services from './sections/Services';
-import Projects from './sections/Projects';
-import BeforeAfter from './sections/BeforeAfter';
+import RenderVsReality from './sections/RenderVsReality';
+import PortfolioSlider from './sections/PortfolioSlider';
+import TrustedPartners from './sections/TrustedPartners';
 import WhyChooseUs from './sections/WhyChooseUs';
 import Process from './sections/Process';
-import Testimonials from './sections/Testimonials';
-import FAQ from './sections/FAQ';
+import TestimonialsAndFAQs from './sections/TestimonialsAndFAQs';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
@@ -32,12 +32,12 @@ function App() {
         <Hero />
         <About />
         <Services />
-        <Projects />
-        <BeforeAfter />
+        <RenderVsReality />
+        <PortfolioSlider />
+        <TrustedPartners />
         <WhyChooseUs />
         <Process />
-        <Testimonials />
-        <FAQ />
+        <TestimonialsAndFAQs />
         <Contact />
       </main>
       <Footer />
