@@ -58,12 +58,28 @@ const Process = () => {
               variants={itemVariants}
               className="relative flex flex-col items-center text-center"
             >
-              {/* Icon Circle */}
+              {/* Vector Illustration or Icon */}
               <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-24 h-24 bg-deep-blue rounded-full flex items-center justify-center mb-6 shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                className="w-48 h-48 flex items-center justify-center mb-6"
               >
-                <span className="text-4xl">{step.icon}</span>
+                {step.vectorImage ? (
+                  <img
+                    src={step.vectorImage}
+                    alt={step.title}
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
+                  />
+                ) : null}
+                <div
+                  className="w-24 h-24 bg-deep-blue rounded-full flex items-center justify-center shadow-lg"
+                  style={{ display: step.vectorImage ? 'none' : 'flex' }}
+                >
+                  <span className="text-4xl">{step.icon}</span>
+                </div>
               </motion.div>
 
               {/* Step Number */}

@@ -83,7 +83,7 @@ const RenderVsReality = () => {
           className="max-w-4xl mx-auto mb-12"
         >
           <div
-            className="relative w-full h-[500px] overflow-hidden rounded-xl shadow-2xl cursor-col-resize select-none"
+            className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl cursor-col-resize select-none group"
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
@@ -119,24 +119,39 @@ const RenderVsReality = () => {
 
             {/* Slider Handle */}
             <div
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-20"
+              className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl z-20 transition-opacity"
               style={{ left: `${sliderPosition}%` }}
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center">
-                <div className="flex gap-1">
-                  <div className="w-0.5 h-6 bg-deep-blue"></div>
-                  <div className="w-0.5 h-6 bg-deep-blue"></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-deep-blue group-hover:scale-110 transition-transform">
+                <div className="flex gap-1.5">
+                  <div className="w-1 h-7 bg-deep-blue rounded-full"></div>
+                  <div className="w-1 h-7 bg-deep-blue rounded-full"></div>
                 </div>
               </div>
             </div>
 
             {/* Match Percentage Badge */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-6 py-3 bg-white/95 backdrop-blur-sm rounded-full shadow-lg z-10">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl font-bold text-deep-blue">
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 px-8 py-4 bg-gradient-to-r from-deep-blue to-premium-red text-white rounded-full shadow-2xl z-10 backdrop-blur-sm"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-3xl font-bold">
                   {pairs[selectedPair].matchPercentage}%
                 </span>
-                <span className="text-sm text-gray-600">Match</span>
+                <div className="text-left">
+                  <div className="text-xs opacity-90">Accuracy</div>
+                  <div className="text-sm font-semibold">Match</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Drag Instruction (shows on hover) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              <div className="bg-black/70 text-white px-6 py-3 rounded-full backdrop-blur-sm">
+                <p className="text-sm font-medium">← Drag to compare →</p>
               </div>
             </div>
           </div>
