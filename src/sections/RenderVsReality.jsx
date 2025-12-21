@@ -57,139 +57,210 @@ const RenderVsReality = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-blue mb-4">
             Render vs Reality
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Drag the slider to compare our 3D renders with the executed reality
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Experience the precision of our execution. Drag the slider to compare our photorealistic 3D renders with the actual delivered spaces.
           </p>
         </motion.div>
 
-        {/* Interactive Comparison Slider */}
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-[1fr_300px] gap-8 items-start mb-12">
+          {/* Interactive Comparison Slider */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div
+              className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl shadow-2xl cursor-col-resize select-none group"
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseUp}
+              onTouchMove={handleTouchMove}
+            >
+              {/* Reality Image (Bottom Layer) */}
+              <img
+                src={pairs[selectedPair].realityImage}
+                alt={`${pairs[selectedPair].title} - Executed Reality`}
+                className="absolute inset-0 w-full h-full object-cover"
+                draggable={false}
+              />
+              <div className="absolute top-4 right-4 px-4 py-2 bg-premium-red text-white rounded-lg font-semibold z-10 shadow-lg">
+                Reality
+              </div>
+
+              {/* Render Image (Top Layer - Clipped) */}
+              <div
+                className="absolute inset-0 w-full h-full overflow-hidden"
+                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+              >
+                <img
+                  src={pairs[selectedPair].renderImage}
+                  alt={`${pairs[selectedPair].title} - 3D Render`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  draggable={false}
+                />
+                <div className="absolute top-4 left-4 px-4 py-2 bg-deep-blue text-white rounded-lg font-semibold shadow-lg">
+                  Render
+                </div>
+              </div>
+
+              {/* Slider Handle */}
+              <div
+                className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl z-20"
+                style={{ left: `${sliderPosition}%` }}
+              >
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-deep-blue group-hover:scale-110 transition-transform">
+                  <div className="flex gap-1.5">
+                    <div className="w-1 h-7 bg-deep-blue rounded-full"></div>
+                    <div className="w-1 h-7 bg-deep-blue rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Drag Instruction (shows initially and on hover) */}
+              <motion.div
+                initial={{ opacity: 1 }}
+                animate={{ opacity: isDragging ? 0 : 1 }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              >
+                <div className="bg-black/70 text-white px-6 py-3 rounded-full backdrop-blur-sm">
+                  <p className="text-sm font-medium whitespace-nowrap">← Drag to compare →</p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Project Info Below Slider */}
+            <div className="mt-6 flex items-start justify-between gap-4">
+              <div>
+                <span className="inline-block px-4 py-2 bg-deep-blue/10 text-deep-blue rounded-full text-sm font-semibold mb-3">
+                  {pairs[selectedPair].category}
+                </span>
+                <h3 className="text-2xl md:text-3xl font-bold text-deep-blue">
+                  {pairs[selectedPair].title}
+                </h3>
+              </div>
+              <div className="flex-shrink-0 text-right">
+                <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-deep-blue to-premium-red text-white rounded-xl shadow-lg">
+                  <span className="text-3xl font-bold">{pairs[selectedPair].matchPercentage}%</span>
+                  <div className="text-left">
+                    <div className="text-xs opacity-90">Accuracy</div>
+                    <div className="text-sm font-semibold">Match</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Project Selector Sidebar */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:sticky lg:top-24"
+          >
+            <h4 className="text-lg font-bold text-deep-blue mb-4">Select Project</h4>
+            <div className="space-y-4">
+              {pairs.map((pair, index) => (
+                <button
+                  key={pair.id}
+                  onClick={() => {
+                    setSelectedPair(index);
+                    setSliderPosition(50);
+                  }}
+                  className={`w-full text-left transition-all duration-300 rounded-xl overflow-hidden ${
+                    selectedPair === index
+                      ? 'ring-4 ring-premium-red shadow-xl scale-105'
+                      : 'ring-1 ring-gray-200 hover:ring-2 hover:ring-deep-blue hover:shadow-lg'
+                  }`}
+                >
+                  {/* Split Preview */}
+                  <div className="relative h-32 overflow-hidden">
+                    {/* Reality half */}
+                    <div className="absolute inset-0 w-1/2 right-0">
+                      <img
+                        src={pair.realityImage}
+                        alt={`${pair.title} - Reality`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute bottom-2 right-2 px-2 py-1 bg-premium-red text-white text-xs rounded font-semibold">
+                        Reality
+                      </div>
+                    </div>
+                    {/* Render half */}
+                    <div className="absolute inset-0 w-1/2 left-0">
+                      <img
+                        src={pair.renderImage}
+                        alt={`${pair.title} - Render`}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute bottom-2 left-2 px-2 py-1 bg-deep-blue text-white text-xs rounded font-semibold">
+                        Render
+                      </div>
+                    </div>
+                    {/* Center divider */}
+                    <div className="absolute top-0 bottom-0 left-1/2 w-1 bg-white shadow-lg"></div>
+                  </div>
+
+                  {/* Info */}
+                  <div className="p-4 bg-white">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-semibold text-deep-blue/70">
+                        {pair.category}
+                      </span>
+                      <span className="text-sm font-bold text-deep-blue">
+                        {pair.matchPercentage}%
+                      </span>
+                    </div>
+                    <h5 className="font-semibold text-deep-blue text-sm">
+                      {pair.title}
+                    </h5>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom Info Cards */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-4xl mx-auto mb-12"
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
         >
-          <div
-            className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl cursor-col-resize select-none group"
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseUp}
-            onTouchMove={handleTouchMove}
-          >
-            {/* Reality Image (Bottom Layer) */}
-            <img
-              src={pairs[selectedPair].realityImage}
-              alt={`${pairs[selectedPair].title} - Executed Reality`}
-              className="absolute inset-0 w-full h-full object-cover"
-              draggable={false}
-            />
-            <div className="absolute top-4 right-4 px-4 py-2 bg-premium-red text-white rounded-lg font-semibold z-10">
-              Executed Reality
-            </div>
-
-            {/* Render Image (Top Layer - Clipped) */}
-            <div
-              className="absolute inset-0 w-full h-full overflow-hidden"
-              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-            >
-              <img
-                src={pairs[selectedPair].renderImage}
-                alt={`${pairs[selectedPair].title} - 3D Render`}
-                className="absolute inset-0 w-full h-full object-cover"
-                draggable={false}
-              />
-              <div className="absolute top-4 left-4 px-4 py-2 bg-deep-blue text-white rounded-lg font-semibold">
-                3D Render
-              </div>
-            </div>
-
-            {/* Slider Handle */}
-            <div
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl z-20 transition-opacity"
-              style={{ left: `${sliderPosition}%` }}
-            >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-deep-blue group-hover:scale-110 transition-transform">
-                <div className="flex gap-1.5">
-                  <div className="w-1 h-7 bg-deep-blue rounded-full"></div>
-                  <div className="w-1 h-7 bg-deep-blue rounded-full"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Match Percentage Badge */}
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="absolute bottom-6 left-1/2 -translate-x-1/2 px-8 py-4 bg-gradient-to-r from-deep-blue to-premium-red text-white rounded-full shadow-2xl z-10 backdrop-blur-sm"
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-3xl font-bold">
-                  {pairs[selectedPair].matchPercentage}%
-                </span>
-                <div className="text-left">
-                  <div className="text-xs opacity-90">Accuracy</div>
-                  <div className="text-sm font-semibold">Match</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Drag Instruction (shows on hover) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-              <div className="bg-black/70 text-white px-6 py-3 rounded-full backdrop-blur-sm">
-                <p className="text-sm font-medium">← Drag to compare →</p>
-              </div>
-            </div>
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+            <div className="text-3xl font-bold text-premium-red mb-2">98%</div>
+            <div className="text-sm font-semibold text-deep-blue mb-1">Average Accuracy</div>
+            <div className="text-xs text-gray-600">Across all completed projects</div>
           </div>
-
-          {/* Title and Category */}
-          <div className="text-center mt-8">
-            <span className="inline-block px-4 py-2 bg-deep-blue/10 text-deep-blue rounded-full text-sm font-semibold mb-3">
-              {pairs[selectedPair].category}
-            </span>
-            <h3 className="text-2xl md:text-3xl font-bold text-deep-blue">
-              {pairs[selectedPair].title}
-            </h3>
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+            <div className="text-3xl font-bold text-premium-red mb-2">100+</div>
+            <div className="text-sm font-semibold text-deep-blue mb-1">Projects Delivered</div>
+            <div className="text-xs text-gray-600">With render-to-reality precision</div>
+          </div>
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-100">
+            <div className="text-3xl font-bold text-premium-red mb-2">3D</div>
+            <div className="text-sm font-semibold text-deep-blue mb-1">Photorealistic Renders</div>
+            <div className="text-xs text-gray-600">See exactly what you'll get</div>
           </div>
         </motion.div>
-
-        {/* Thumbnail Selector */}
-        <div className="flex justify-center gap-4">
-          {pairs.map((pair, index) => (
-            <button
-              key={pair.id}
-              onClick={() => {
-                setSelectedPair(index);
-                setSliderPosition(50);
-              }}
-              className={`relative w-24 h-24 rounded-lg overflow-hidden transition-all duration-300 ${
-                selectedPair === index
-                  ? 'ring-4 ring-premium-red scale-110'
-                  : 'opacity-60 hover:opacity-100'
-              }`}
-            >
-              <img
-                src={pair.renderImage}
-                alt={pair.title}
-                className="w-full h-full object-cover"
-              />
-            </button>
-          ))}
-        </div>
       </div>
     </section>
   );
