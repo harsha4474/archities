@@ -73,8 +73,6 @@ const Hero = () => {
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
           />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-br from-deep-blue/80 via-deep-blue/70 to-premium-red/80" />
         </motion.div>
       </AnimatePresence>
 
