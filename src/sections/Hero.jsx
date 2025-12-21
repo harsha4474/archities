@@ -11,7 +11,8 @@ const Hero = () => {
       subtitle: "Designed Just for You",
       description: "Premium architectural interior design that transforms your vision into breathtaking reality",
       cta1: "Explore Interiors",
-      cta2: "Get Free Consultation"
+      cta2: "Get Free Consultation",
+      image: "/images/projects/project-01.jpg"
     },
     {
       id: 2,
@@ -19,7 +20,8 @@ const Hero = () => {
       subtitle: "Living Spaces",
       description: "Expert craftsmanship meets innovative design to create spaces that inspire and delight",
       cta1: "View Portfolio",
-      cta2: "Schedule Consultation"
+      cta2: "Schedule Consultation",
+      image: "/images/projects/project-03.jpg"
     },
     {
       id: 3,
@@ -27,7 +29,8 @@ const Hero = () => {
       subtitle: "Awaits",
       description: "From concept to completion - we bring your interior design dreams to life with precision",
       cta1: "Our Services",
-      cta2: "Get Started"
+      cta2: "Get Started",
+      image: "/images/projects/project-05.jpg"
     }
   ];
 
@@ -55,34 +58,25 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-deep-blue via-deep-blue to-premium-red">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Images with Fade Effect */}
+      <AnimatePresence mode="wait">
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-20 right-20 w-96 h-96 bg-premium-red opacity-10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [90, 0, 90],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-20 left-20 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"
-        />
-      </div>
+          key={currentSlide}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0"
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-deep-blue/80 via-deep-blue/70 to-premium-red/80" />
+        </motion.div>
+      </AnimatePresence>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

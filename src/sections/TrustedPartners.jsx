@@ -2,16 +2,16 @@ import { motion } from 'framer-motion';
 
 const TrustedPartners = () => {
   const partners = [
-    'Hettich',
-    'Century Ply',
-    'Greenlam',
-    'Saint-Gobain',
-    'Bosch',
-    'Asian Paints',
-    'O-General',
-    'Orient Bell',
-    'IKEA',
-    'Jaguar'
+    { name: 'Hettich', color: '#E31E24' },
+    { name: 'Century Ply', color: '#004B87' },
+    { name: 'Greenlam', color: '#00A651' },
+    { name: 'Saint-Gobain', color: '#0071CE' },
+    { name: 'Bosch', color: '#EA0016' },
+    { name: 'Asian Paints', color: '#FF0000' },
+    { name: 'O-General', color: '#003DA5' },
+    { name: 'Orient Bell', color: '#D32F2F' },
+    { name: 'IKEA', color: '#0051BA' },
+    { name: 'Jaguar', color: '#000000' }
   ];
 
   return (
@@ -45,12 +45,25 @@ const TrustedPartners = () => {
           >
             {[...partners, ...partners].map((partner, index) => (
               <div
-                key={`${partner}-${index}`}
-                className="flex-shrink-0 w-40 h-24 bg-white rounded-lg shadow-md flex items-center justify-center border border-gray-200 hover:shadow-lg transition-shadow duration-300"
+                key={`${partner.name}-${index}`}
+                className="flex-shrink-0 w-40 h-24 bg-white rounded-lg shadow-md flex items-center justify-center border border-gray-200 hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
-                <span className="text-deep-blue font-semibold text-sm text-center px-4">
-                  {partner}
-                </span>
+                <div className="text-center px-4">
+                  <div
+                    className="font-bold text-lg mb-1"
+                    style={{ color: partner.color }}
+                  >
+                    {partner.name.split(' ')[0]}
+                  </div>
+                  {partner.name.split(' ')[1] && (
+                    <div
+                      className="text-xs font-semibold tracking-wider"
+                      style={{ color: partner.color }}
+                    >
+                      {partner.name.split(' ')[1]}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </motion.div>
