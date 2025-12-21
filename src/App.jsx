@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Services from './sections/Services';
+import RenderVsReality from './sections/RenderVsReality';
 import PortfolioSlider from './sections/PortfolioSlider';
 import TrustedPartners from './sections/TrustedPartners';
 import WhyChooseUs from './sections/WhyChooseUs';
@@ -28,6 +29,7 @@ function App() {
         <Hero />
         <About />
         <Services />
+        <RenderVsReality />
         <PortfolioSlider />
         <TrustedPartners />
         <WhyChooseUs />
