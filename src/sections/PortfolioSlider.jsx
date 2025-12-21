@@ -1,11 +1,19 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { projects } from '../data/projects';
 
 const PortfolioSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 3;
   const totalPages = Math.ceil(projects.length / itemsPerPage);
+
+  // Auto-advance slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % totalPages);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [totalPages]);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % totalPages);

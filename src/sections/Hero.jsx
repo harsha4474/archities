@@ -12,7 +12,7 @@ const Hero = () => {
       description: "Premium architectural interior design that transforms your vision into breathtaking reality",
       cta1: "Explore Interiors",
       cta2: "Get Free Consultation",
-      image: "/images/projects/project-01.jpg"
+      image: "/images/renders/living-room-view-01.jpg"
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const Hero = () => {
       description: "Expert craftsmanship meets innovative design to create spaces that inspire and delight",
       cta1: "View Portfolio",
       cta2: "Schedule Consultation",
-      image: "/images/projects/project-03.jpg"
+      image: "/images/renders/bedroom-01.jpg"
     },
     {
       id: 3,
@@ -30,7 +30,7 @@ const Hero = () => {
       description: "From concept to completion - we bring your interior design dreams to life with precision",
       cta1: "Our Services",
       cta2: "Get Started",
-      image: "/images/projects/project-05.jpg"
+      image: "/images/renders/kitchen-dining-area.jpg"
     }
   ];
 
