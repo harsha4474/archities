@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { processSteps } from '../data/process';
+import { processSteps } from '../data/process.jsx';
 
 const Process = () => {
   const ref = useRef(null);
@@ -27,7 +27,7 @@ const Process = () => {
   };
 
   return (
-    <section id="process" className="py-20 bg-gradient-to-br from-deep-blue to-premium-red relative overflow-hidden">
+    <section id="process" className="py-20 bg-deep-blue relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
