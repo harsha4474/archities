@@ -87,14 +87,14 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold text-white mb-6"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6"
             >
               {slides[currentSlide].title}
-              <span className="block mt-2 text-off-white">{slides[currentSlide].subtitle}</span>
+              <span className="block mt-1 sm:mt-2 text-off-white">{slides[currentSlide].subtitle}</span>
             </motion.h1>
 
             <motion.p
-              className="text-xl md:text-2xl text-gray-200 mb-12 max-w-3xl mx-auto"
+              className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto"
             >
               {slides[currentSlide].description}
             </motion.p>

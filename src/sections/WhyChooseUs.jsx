@@ -65,7 +65,7 @@ const WhyChooseUs = () => {
   };
 
   return (
-    <section id="why-choose-us" className="py-20 bg-gradient-to-b from-white to-off-white">
+    <section id="why-choose-us" className="py-12 md:py-20 bg-gradient-to-b from-white to-off-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
