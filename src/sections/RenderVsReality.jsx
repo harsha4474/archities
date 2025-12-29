@@ -57,7 +57,7 @@ const RenderVsReality = () => {
   };
 
   return (
-    <section id="before-after" className="py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+    <section id="before-after" className="py-12 md:py-24 bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -65,18 +65,18 @@ const RenderVsReality = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-6 md:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-blue mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-deep-blue mb-3 md:mb-4">
             Render vs Reality
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
             Experience the precision of our execution. Drag the slider to compare our photorealistic 3D renders with the actual delivered spaces.
           </p>
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid lg:grid-cols-[1fr_300px] gap-8 items-start mb-12">
+        <div className="grid lg:grid-cols-[1fr_300px] gap-6 md:gap-8 items-start mb-8 md:mb-12">
           {/* Interactive Comparison Slider */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
