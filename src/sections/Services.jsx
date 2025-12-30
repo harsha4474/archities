@@ -38,10 +38,10 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
-            Our Services
+            Interior Design Services in Hyderabad
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Comprehensive interior design solutions tailored to your unique vision and lifestyle
+            Complete home interior solutions including modular kitchens, bedroom design, living rooms, and custom furniture - tailored to your lifestyle
           </p>
         </motion.div>
 

@@ -38,17 +38,14 @@ const About = () => {
           {/* Text Content */}
           <motion.div variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-6">
-              Crafting Spaces,
-              <span className="block text-premium-red">Creating Experiences</span>
+              Leading Interior Designers in Hyderabad
+              <span className="block text-premium-red">Transforming Homes Across Telangana & AP</span>
             </h2>
             <p className="text-lg text-gray-700 mb-6">
-              At Archities, we believe that exceptional interior design goes beyond aesthetics.
-              It's about creating environments that inspire, comfort, and reflect your unique personality.
+              At Archities, we are Hyderabad's premier interior design company specializing in residential and commercial interior solutions. Our expert team creates stunning spaces that blend functionality with aesthetic excellence.
             </p>
             <p className="text-lg text-gray-700 mb-6">
-              With years of expertise in architectural interior design, our team transforms ordinary
-              spaces into extraordinary sanctuaries. From contemporary homes to sophisticated commercial
-              spaces, we bring your vision to life with meticulous attention to detail.
+              With 10+ years of expertise in architectural interior design, we transform homes and offices across Hyderabad, Telangana, and Andhra Pradesh. From modern modular kitchens to luxurious bedroom designs and complete home makeovers, we deliver exceptional results with meticulous attention to detail.
             </p>
             <div className="grid grid-cols-3 gap-6 mt-8">
               <div className="text-center">
@@ -75,7 +72,7 @@ const About = () => {
             >
               <img
                 src="/images/about/about-01.jpg"
-                alt="Executed Interior Design - Feature Wall"
+                alt="Premium Interior Design Hyderabad - Modern Feature Wall by Archities"
                 className="w-full h-64 object-cover"
               />
             </motion.div>
@@ -86,7 +83,7 @@ const About = () => {
             >
               <img
                 src="/images/about/about-02.jpg"
-                alt="Executed Interior Design - Living Room"
+                alt="Luxury Living Room Interior Design Hyderabad - Archities Portfolio"
                 className="w-full h-64 object-cover"
               />
             </motion.div>
@@ -97,7 +94,7 @@ const About = () => {
             >
               <img
                 src="/images/about/about-03.jpg"
-                alt="Executed Interior Design - Bedroom Suite"
+                alt="Modern Bedroom Interior Design Hyderabad - Complete Home Interiors by Archities"
                 className="w-full h-48 object-cover"
               />
             </motion.div>

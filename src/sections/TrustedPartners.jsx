@@ -25,8 +25,11 @@ const TrustedPartners = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Winning collaborations that produce winning designs
+            Trusted Brands & Premium Partners
           </h2>
+          <p className="text-lg text-gray-200 max-w-3xl mx-auto">
+            Collaborating with industry-leading brands to deliver exceptional interior design solutions
+          </p>
         </motion.div>
 
         {/* Partners Infinite Carousel */}

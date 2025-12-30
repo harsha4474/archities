@@ -61,10 +61,10 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
-            Get In Touch
+            Contact Hyderabad's Best Interior Designers
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ready to transform your space? Let's discuss your project
+            Get a free consultation for your home interior project in Hyderabad, Telangana, or Andhra Pradesh
           </p>
         </motion.div>
 

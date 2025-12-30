@@ -37,10 +37,10 @@ const Process = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
-            How It Works
+            Our Interior Design Process
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A transparent, step-by-step process designed for your peace of mind
+            From consultation to final installation - a seamless, transparent process for your dream home interiors
           </p>
         </motion.div>
 
