@@ -75,10 +75,10 @@ const WhyChooseUs = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-deep-blue mb-4">
-            Why Choose Archities?
+            Why Choose Archities as Your Interior Designer in Hyderabad?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We combine creativity, expertise, and dedication to deliver exceptional results
+            Trusted by 85+ happy clients across Telangana & AP with 10+ years of interior design expertise
           </p>
         </motion.div>
 
