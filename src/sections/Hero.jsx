@@ -58,7 +58,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[85vh] md:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Images with Fade Effect */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -87,24 +87,24 @@ const Hero = () => {
             transition={{ duration: 0.6 }}
           >
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6"
+              className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-3 sm:mb-6"
             >
               {slides[currentSlide].title}
               <span className="block mt-1 sm:mt-2 text-off-white">{slides[currentSlide].subtitle}</span>
             </motion.h1>
 
             <motion.p
-              className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-6 sm:mb-8 md:mb-12 max-w-3xl mx-auto"
+              className="text-base sm:text-xl md:text-2xl text-gray-200 mb-4 sm:mb-8 md:mb-12 max-w-3xl mx-auto"
             >
               {slides[currentSlide].description}
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center items-center"
             >
               <button
                 onClick={() => scrollToSection('#portfolio')}
-                className="group relative px-8 py-4 bg-white text-deep-blue rounded-full font-semibold text-lg overflow-hidden transition-all hover:scale-105"
+                className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-white text-deep-blue rounded-full font-semibold text-base sm:text-lg overflow-hidden transition-all hover:scale-105"
               >
                 <span className="relative z-10">{slides[currentSlide].cta1}</span>
                 <motion.div
@@ -120,7 +120,7 @@ const Hero = () => {
 
               <button
                 onClick={() => scrollToSection('#contact')}
-                className="px-8 py-4 border-2 border-white text-white rounded-full font-semibold text-lg hover:bg-white hover:text-deep-blue transition-all hover:scale-105"
+                className="px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-deep-blue transition-all hover:scale-105"
               >
                 {slides[currentSlide].cta2}
               </button>

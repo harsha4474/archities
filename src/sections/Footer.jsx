@@ -29,8 +29,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-deep-blue text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -38,10 +38,12 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-4">
+            <div className="mb-8">
               <Logo color="white" className="h-12" />
             </div>
             <p className="text-gray-200 mb-6">
+              <strong>Archities - Architects & Interior Designers</strong>
+              <br />
               Transforming spaces into extraordinary experiences through premium interior design.
             </p>
             <div className="flex gap-4">
