@@ -28,7 +28,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-slate-800 to-slate-900 text-white">
+    <footer className="bg-gradient-to-b from-gray-50 to-gray-100 text-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
           {/* Brand */}
@@ -39,9 +39,9 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="mb-8">
-              <Logo color="white" className="h-12" />
+              <Logo color="dark" className="h-12" />
             </div>
-            <p className="text-gray-200 mb-6">
+            <p className="text-gray-700 mb-6">
               <strong>Archities - Architects & Interior Designers</strong>
               <br />
               Transforming spaces into extraordinary experiences through premium interior design.
@@ -53,7 +53,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 360 }}
                 transition={{ duration: 0.3 }}
-                className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                className="w-10 h-10 bg-premium-red/10 rounded-full flex items-center justify-center hover:bg-premium-red/20 transition-colors text-premium-red"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 360 }}
                 transition={{ duration: 0.3 }}
-                className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                className="w-10 h-10 bg-premium-red/10 rounded-full flex items-center justify-center hover:bg-premium-red/20 transition-colors text-premium-red"
                 aria-label="YouTube"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -79,7 +79,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, rotate: 360 }}
                 transition={{ duration: 0.3 }}
-                className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
+                className="w-10 h-10 bg-premium-red/10 rounded-full flex items-center justify-center hover:bg-premium-red/20 transition-colors text-premium-red"
                 aria-label="WhatsApp"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -96,7 +96,7 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-xl font-bold mb-4">Quick Links</h4>
+            <h4 className="text-xl font-bold mb-4 text-deep-blue">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -106,7 +106,7 @@ const Footer = () => {
                       e.preventDefault();
                       scrollToSection(link.href);
                     }}
-                    className="text-gray-200 hover:text-white transition-colors"
+                    className="text-gray-600 hover:text-premium-red transition-colors"
                   >
                     {link.name}
                   </a>
@@ -122,10 +122,10 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-xl font-bold mb-4">Services</h4>
+            <h4 className="text-xl font-bold mb-4 text-deep-blue">Services</h4>
             <ul className="space-y-2">
               {services.map((service) => (
-                <li key={service} className="text-gray-200">
+                <li key={service} className="text-gray-600">
                   {service}
                 </li>
               ))}
@@ -139,8 +139,8 @@ const Footer = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="text-xl font-bold mb-4">Contact</h4>
-            <ul className="space-y-3 text-gray-200">
+            <h4 className="text-xl font-bold mb-4 text-deep-blue">Contact</h4>
+            <ul className="space-y-3 text-gray-600">
               <li className="flex items-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -170,7 +170,7 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="border-t border-white/20 pt-8 text-center text-gray-200"
+          className="border-t border-gray-300 pt-8 text-center text-gray-600"
         >
           <p>&copy; {new Date().getFullYear()} Archities. All rights reserved.</p>
           <p className="mt-2 text-sm">Premium Interior Design Solutions</p>
