@@ -31,43 +31,8 @@ const TrustedPartners = () => {
 
         {/* Partners Infinite Carousel */}
         <div className="relative overflow-hidden">
-          {/* First Row */}
           <motion.div
             animate={{ x: ['0%', '-50%'] }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: 'linear'
-            }}
-            className="flex gap-12 mb-8"
-          >
-            {[...partners, ...partners].map((partner, index) => (
-              <div
-                key={`${partner.name}-${index}`}
-                className="flex-shrink-0 w-40 h-24 bg-white rounded-lg flex items-center justify-center p-4"
-              >
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="max-w-full max-h-full object-contain"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'block';
-                  }}
-                />
-                <span
-                  className="text-gray-700 font-bold text-sm text-center"
-                  style={{ display: 'none' }}
-                >
-                  {partner.name}
-                </span>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Second Row (reversed direction) */}
-          <motion.div
-            animate={{ x: ['-50%', '0%'] }}
             transition={{
               duration: 30,
               repeat: Infinity,
@@ -77,7 +42,7 @@ const TrustedPartners = () => {
           >
             {[...partners, ...partners].map((partner, index) => (
               <div
-                key={`${partner.name}-reverse-${index}`}
+                key={`${partner.name}-${index}`}
                 className="flex-shrink-0 w-40 h-24 bg-white rounded-lg flex items-center justify-center p-4"
               >
                 <img
