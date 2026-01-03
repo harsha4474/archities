@@ -23,8 +23,8 @@ export const beforeAfterProjects = [
     title: "Luxury Modular Kitchen with Herringbone Backsplash",
     category: "Kitchen",
     description: "Stunning kitchen featuring flawless white herringbone tile pattern, handleless taupe cabinets, and premium black fixtures. Over 1000 tiles perfectly aligned in precise herringbone pattern.",
-    beforeImage: "/images/renders/kitchen-01.jpg",
-    afterImage: "/images/reality/modular-kitchen-01.jpg",
+    beforeImage: "/images/renders/render-11.jpg",
+    afterImage: "/images/reality/bedroom-wardrobe-01.jpg",
     highlights: [
       "1000+ tiles in perfect herringbone alignment",
       "Handleless push-to-open cabinets",
