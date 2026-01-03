@@ -18,8 +18,8 @@ const RenderVsReality = () => {
     {
       id: 2,
       title: "Modern Kitchen Design",
-      renderImage: "/images/renders/kitchen-01.jpg",
-      realityImage: "/images/reality/kitchen-golden-hardware.jpg",
+      renderImage: "/images/renders/render-11.jpg",
+      realityImage: "/images/reality/modular-kitchen-01.jpg",
       category: "Kitchen",
       matchPercentage: 96
     },
