@@ -27,7 +27,7 @@ export const projects = [
     id: 5,
     title: "Master Bedroom with Feature Wall",
     category: "Bedroom",
-    image: "/images/projects/project-05.jpg"
+    image: "/images/projects/bedroom-03.jpg"
   },
   {
     id: 6,
