@@ -7,7 +7,7 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Modern Kitchen & Dining Area",
+    title: "Modern Living Area",
     category: "Kitchen",
     image: "/images/projects/project-02.jpg"
   },
@@ -21,7 +21,7 @@ export const projects = [
     id: 4,
     title: "Children's Bedroom with Theme Wall",
     category: "Bedroom",
-    image: "/images/projects/project-04.jpg"
+    image: "/images/projects/bedroom-03.jpg"
   },
   {
     id: 5,
